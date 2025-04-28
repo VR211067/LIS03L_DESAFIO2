@@ -1,0 +1,192 @@
+ /* General */
+ body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding-top: 70px;
+    background: linear-gradient(135deg, #fef6f0 0%, #ffe8cc 100%);
+    color: #4b145b;
+}
+
+
+    /* Navbar */
+    nav {
+        background-color:rgb(250, 113, 49);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 40px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+
+    .nav-left {
+        font-size: 1.5em;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-left img {
+        height: 60px;
+        margin-right: 10px;
+    }
+
+    .nav-right a {
+        color: white;
+        padding: 8px 12px;
+        margin-left: 10px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        background: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-right a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ff922b;
+    }
+
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        padding: 100px 20px 60px;
+        background: linear-gradient(135deg, #fef6f0 0%, #ffe8cc 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: auto;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    .hero-title {
+        font-size: 3.5em;
+        color: #6f42c1;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .highlight {
+        color:rgb(228, 116, 24);
+    }
+
+    .hero-subtitle {
+        font-size: 1.4em;
+        color: #6f42c1;
+        margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .btn-hero {
+        text-decoration: none;
+        background-color: #ff922b;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-hero:hover {
+        background-color: #f76707;
+        transform: scale(1.05);
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        border: 2px solid #ff922b;
+        color: #ff922b;
+    }
+
+    .btn-outline:hover {
+        background-color: #ff922b;
+        color: white;
+    }
+
+    /* Carousel */
+    .carousel {
+        margin: 50px auto;
+        width: 90%;
+        max-width: 800px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Misión y Visión */
+    .mision-vision {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #fef6f0 0%, #ffe8cc 100%);
+    color: #4b145b;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .section-title {
+        color: #d63384;
+        font-size: 2.8em;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+
+    .mision-vision h2 {
+        color: #6f42c1;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .mision-vision p {
+        color:rgb(178, 158, 192);
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text-primary {
+    color: #6f42c1 !important; /* tu morado principal */
+}
+
+    /* Footer */
+    footer {
+        background-color: #6f42c1;
+        color: white;
+        text-align: center;
+        padding: 20px 10px;
+        font-size: 0.9em;
+        margin-top: 50px;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+        0% {opacity: 0; transform: translateY(20px);}
+        100% {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .animate-card {
+        animation: float 6s ease-in-out infinite;
+    }

@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /TextilExport/
+
+# NO reescribir si el archivo o carpeta existe
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Permitir el acceso a los archivos en la carpeta "public/uploads/comprobantes"
+RewriteCond %{REQUEST_URI} ^/TextilExport/Public/uploads/comprobantes/
+RewriteRule ^ - [L]
+
+# Todo lo demás pasa por index.php
+RewriteRule ^ index.php [QSA,L]
