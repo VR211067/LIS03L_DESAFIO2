@@ -15,6 +15,10 @@
 </nav>
 
 <h1>Editar Producto</h1>
+<?php if (!empty($error)): ?>
+    <div class="error"><?= htmlspecialchars($error) ?></div>
+<?php endif; ?>
+
 
 <form method="POST" enctype="multipart/form-data">
     <label>Código:</label>

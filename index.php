@@ -25,7 +25,7 @@ $slices = explode('/', $url);
 
 $controller = empty($slices[2]) ? "IndexController" : $slices[2] . "Controller";
 $methodRaw = empty($slices[3]) ? "index" : $slices[3];
-$method = explode('?', $methodRaw)[0];  // 👈 Esto elimina "?archivo=..." del método
+$method = explode('?', $methodRaw)[0];  
 
 $params = array_slice($slices, 4);
 
