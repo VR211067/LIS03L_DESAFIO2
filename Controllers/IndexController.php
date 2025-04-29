@@ -1,49 +1,55 @@
 <?php
-require_once 'Controller.php';
-require_once 'Models/Venta.php';
-require_once 'Models/Producto.php';
-require_once 'Models/Cliente.php';
-require_once 'Models/Usuario.php';
+// Se incluyen los archivos base necesarios
+require_once 'Controller.php';              
+require_once 'Models/Venta.php';            
+require_once 'Models/Producto.php';         
+require_once 'Models/Cliente.php';         
+require_once 'Models/Usuario.php';          
 
 class IndexController extends Controller {
 
-    // Redirección inicial a la tienda pública
+    // Método que se ejecuta cuando se accede a la raíz del controlador
     public function index() {
+        // Redirige a la tienda pública del sitio
         header("Location: /TextilExport/Public/index");
-        exit();
+        exit(); 
     }
 
-    // Dashboard del panel de administración
+    // Método que muestra el dashboard del panel de administración
     public function dashboard() {
+        // Inicia la sesión
         session_start();
 
-        // Verifica si hay un usuario en sesión
+        // Verifica si hay un usuario autenticado en la sesión
         if (!isset($_SESSION['usuario'])) {
+            // Si no hay usuario, redirige al login de administrador
             header("Location: /TextilExport/Auth/login");
             exit();
         }
 
+        // Obtiene el nombre y rol del usuario autenticado
         $nombre = $_SESSION['usuario']['nombre'];
         $rol = $_SESSION['usuario']['rol'];
 
-        // Si existiera un rol "cliente", puedes excluirlo aquí
+        // Si el rol fuera "cliente" (aunque no se espera aquí), lo redirige a la tienda pública
         if ($rol === 'cliente') {
             header("Location: /TextilExport/Public/tienda");
             exit();
         }
 
-        // Obtener estadísticas para mostrar en el dashboard
+        // Crea instancias de los modelos necesarios para obtener datos del sistema
         $ventaModel = new Venta();
         $productoModel = new Producto();
         $clienteModel = new Cliente();
         $usuarioModel = new Usuario();
 
-        $totalVentas = $ventaModel->getTotalVentas();
-        $totalProductos = $productoModel->contarProductos();
-        $totalClientes = $clienteModel->contarClientes();
-        $totalUsuarios = $usuarioModel->contarUsuarios();
+        // Obtiene estadísticas generales para mostrar en el dashboard
+        $totalVentas = $ventaModel->getTotalVentas();               // Total de ventas realizadas
+        $totalProductos = $productoModel->contarProductos();        // Total de productos en catálogo
+        $totalClientes = $clienteModel->contarClientes();           // Total de clientes registrados
+        $totalUsuarios = $usuarioModel->contarUsuarios();           // Total de usuarios (admins y empleados)
 
-        // Renderiza la vista del dashboard con los datos
+        // Renderiza la vista dashboard.php pasándole los datos estadísticos y del usuario
         $this->render('dashboard.php', [
             'nombre' => $nombre,
             'rol' => $rol,
