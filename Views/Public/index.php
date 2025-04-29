@@ -25,8 +25,8 @@
         <p class="hero-subtitle">Los mejores textiles y promocionales de El Salvador para tu empresa o evento.</p>
         <div class="hero-buttons">
             <a href="/TextilExport/Public/tienda" class="btn-hero">Ver Catálogo</a>
-            <a href="/TextilExport/Public/login" class="btn-hero btn-outline">Soy Cliente</a>
-            <a href="/TextilExport/Auth/login" class="btn-hero btn-outline">Soy Empleado</a>
+            <a href="/TextilExport/Public/login" class="btn-hero btn-outline">Cliente</a>
+            <a href="/TextilExport/Auth/login" class="btn-hero btn-outline">Empleado</a>
         </div>
     </div>
 </section>

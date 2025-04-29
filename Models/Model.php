@@ -1,9 +1,9 @@
 <?php
 abstract class Model {
-    private $host = 'localhost:3306';
-    private $user = 'root';
-    private $password = '';
-    private $db_name = 'textil_export';
+    private $host = 'sql305.infinityfree.com';
+    private $user = 'if0_38856962';
+    private $password = 'X5Cipxrs3WEQ';
+    private $db_name = 'if0_38856962_textil_export';
     protected $conn;
 
     // Crear conexión

@@ -42,8 +42,12 @@
                   
                     <td>
                         <div class="btn-group">
-                            <a href="/TextilExport/Usuarios/edit/<?= $p['id'] ?>" class="btn-editar">Editar</a>
-                            <a href="/TextilExport/Usuarios/delete/<?= $p['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar a este Usuario?')">Eliminar</a>
+                        <a href="/TextilExport/Usuarios/edit/<?= $u['id'] ?>" class="btn-editar">Editar</a>
+                        <form action="/TextilExport/Usuarios/delete" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?= $u['id'] ?>">
+                            <button type="submit" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar a este Usuario?')">Eliminar</button>
+                        </form>
+
                         </div>
                     </td>
                 </tr>

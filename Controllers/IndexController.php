@@ -1,9 +1,9 @@
 <?php
 require_once 'Controller.php';
-require_once 'models/Venta.php';
-require_once 'models/Producto.php';
-require_once 'models/Cliente.php';
-require_once 'models/Usuario.php';
+require_once 'Models/Venta.php';
+require_once 'Models/Producto.php';
+require_once 'Models/Cliente.php';
+require_once 'Models/Usuario.php';
 
 class IndexController extends Controller {
 

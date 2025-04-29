@@ -71,10 +71,15 @@ class ProductosController extends Controller {
         $this->render('edit.php', ['producto' => $producto, 'categorias' => $categorias]);
     }
 
-    public function delete($params) {
-        $id = $params[0];
-        $this->productoModel->delete($id);
-        header("Location: /TextilExport/Productos");
-        exit();
+    public function delete() {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $_POST['id'] ?? null;
+        if ($id) {
+            $this->productoModel->delete($id);
+        }
     }
+    header("Location: /TextilExport/Productos");
+    exit();
+}
+
 }

@@ -102,7 +102,9 @@ class CarritoController extends Controller {
             ]);
         }
     
-        $nombre_pdf = $this->generarComprobantePDF($venta_id, $carrito, $total);
+       $cliente_nombre = $_SESSION['cliente']['nombre'];
+        $nombre_pdf = $this->generarComprobantePDF($venta_id, $carrito, $total, $cliente_nombre);
+
         $this->ventaModel->guardarComprobante($venta_id, $nombre_pdf);
     
         $_SESSION['carrito'] = [];
@@ -131,33 +133,49 @@ class CarritoController extends Controller {
         $this->render('comprobante.php', ['pdf' => $archivo]);
     }
 
-    private function generarComprobantePDF($venta_id, $carrito, $total) {
-        $dompdf = new Dompdf();
-        $html = "<h2>Comprobante de Compra #$venta_id</h2>
-                 <table border='1' cellpadding='5' cellspacing='0'>
-                 <tr><th>Producto</th><th>Cantidad</th><th>Precio</th></tr>";
+    private function generarComprobantePDF($venta_id, $carrito, $total, $cliente_nombre) {
+    $dompdf = new Dompdf();
+    $html = "<div style='text-align: center;'>
+                <h1>TextilExport</h1>
+                <h2>Comprobante de Compra #$venta_id</h2>
+                <h3>Cliente: " . htmlspecialchars($cliente_nombre) . "</h3>
+             </div>
+             <table border='1' cellpadding='5' cellspacing='0' style='width:100%; margin-top:20px;'>
+             <thead>
+             <tr><th>Producto</th><th>Cantidad</th><th>Precio</th></tr>
+             </thead>
+             <tbody>";
 
-        foreach ($carrito as $item) {
-            $subtotal = $item['precio'] * $item['cantidad'];
-            $html .= "<tr><td>{$item['nombre']}</td><td>{$item['cantidad']}</td><td>$" . number_format($subtotal, 2) . "</td></tr>";
-        }
-
-        $html .= "<tr><td colspan='2'><strong>Total</strong></td><td><strong>$" . number_format($total, 2) . "</strong></td></tr>";
-        $html .= "</table>";
-
-        $dompdf->loadHtml($html);
-        $dompdf->render();
-
-        $filename = "comp-" . time() . ".pdf";
-        $ruta = $_SERVER['DOCUMENT_ROOT'] . "/TextilExport/Public/uploads/comprobantes";
-
-        if (!is_dir($ruta)) {
-            mkdir($ruta, 0777, true);
-        }
-
-        file_put_contents("$ruta/$filename", $dompdf->output());
-        chmod("$ruta/$filename", 0644);
-
-        return $filename;
+    foreach ($carrito as $item) {
+        $subtotal = $item['precio'] * $item['cantidad'];
+        $html .= "<tr>
+                    <td>{$item['nombre']}</td>
+                    <td style='text-align:center;'>{$item['cantidad']}</td>
+                    <td style='text-align:right;'>$" . number_format($subtotal, 2) . "</td>
+                  </tr>";
     }
+
+    $html .= "<tr>
+                <td colspan='2' style='text-align:right;'><strong>Total</strong></td>
+                <td style='text-align:right;'><strong>$" . number_format($total, 2) . "</strong></td>
+              </tr>
+             </tbody>
+             </table>";
+
+    $dompdf->loadHtml($html);
+    $dompdf->render();
+
+    $filename = "comp-" . time() . ".pdf";
+    $ruta = $_SERVER['DOCUMENT_ROOT'] . "/TextilExport/Public/uploads/comprobantes";
+
+    if (!is_dir($ruta)) {
+        mkdir($ruta, 0777, true);
+    }
+
+    file_put_contents("$ruta/$filename", $dompdf->output());
+    chmod("$ruta/$filename", 0644);
+
+    return $filename;
+}
+
 }

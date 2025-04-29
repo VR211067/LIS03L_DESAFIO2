@@ -51,13 +51,18 @@ class UsuariosController extends Controller {
         $this->render('edit.php', ['usuario' => $usuario]);
     }
 
-    public function delete($params) {
+    public function delete() {
         $this->authorizeAdmin();
-        $id = $params[0];
-        $this->model->delete($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $this->model->delete($id);
+            }
+        }
         header("Location: /TextilExport/Usuarios");
         exit();
     }
+    
 
     private function authorizeAdmin() {
         if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 'admin') {

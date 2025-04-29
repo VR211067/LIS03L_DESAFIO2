@@ -9,7 +9,8 @@
 
 <nav>
     <div class="logo">
-        <img src="/TextilExport/public/img/logo2.png" alt="Logo TextilExport">
+    <img src="/TextilExport/Public/IMG/logo2.png" alt="Logo TextilExport">
+
         TextilExport
     </div>
     <div class="nav-links">

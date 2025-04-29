@@ -40,7 +40,11 @@
                     <td>
                         <div class="btn-group">
                             <a href="/TextilExport/Categorias/edit/<?= $cat['id'] ?>" class="btn-editar">Editar</a>
-                            <a href="/TextilExport/Categorias/delete/<?= $cat['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Seguro?')">Eliminar</a>
+                            <form action="/TextilExport/Categorias/delete" method="POST" style="display:inline;">
+                                <input type="hidden" name="id" value="<?= $cat['id'] ?>">
+                                <button type="submit" class="btn-eliminar" onclick="return confirm('¿Seguro?')">Eliminar</button>
+                            </form>
+
                         </div>
                     </td>
 

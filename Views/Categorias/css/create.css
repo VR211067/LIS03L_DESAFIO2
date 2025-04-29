@@ -53,14 +53,14 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 10px;
     min-height: calc(100vh - 80px);
 }
 
 form {
     background-color: #fff;
     border: 2px solid #ffa94d;
-    padding: 30px 40px;
+    padding: 10px 10px;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     width: 100%;

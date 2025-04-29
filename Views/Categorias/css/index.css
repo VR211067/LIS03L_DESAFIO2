@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fef6f0;
@@ -29,8 +28,6 @@ nav {
 .nav-left img.logo {
     height: 60px;
     display: block;
-    border: none;
-    border-radius: 0;
 }
 
 .nav-links {
@@ -39,10 +36,6 @@ nav {
     gap: 20px;
     margin: 0;
     padding: 0;
-}
-
-.nav-links li {
-    display: inline;
 }
 
 .nav-links li a {
@@ -61,13 +54,7 @@ nav {
 
 /* CONTENIDO */
 .container {
-    padding: 40px;
-}
-
-h1 {
-    text-align: center;
-    color: #d63384;
-    margin-bottom: 30px;
+    padding: 20px 40px 40px 40px;
 }
 
 a {
@@ -81,20 +68,37 @@ a:hover {
     text-decoration: underline;
 }
 
-a[href*="/create"] {
+/* HEADER ROW */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-row .titulo {
+    margin: 0;
+    color: #d63384;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.btn-nueva-categoria {
     background-color: #f76707;
     color: white;
     padding: 10px 15px;
     border-radius: 6px;
     text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
     display: inline-block;
-    margin-bottom: 20px;
 }
 
-a[href*="/create"]:hover {
+.btn-nueva-categoria:hover {
     background-color: #e8590c;
 }
 
+/* TABLA */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -102,6 +106,7 @@ table {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    margin-top: 0;
 }
 
 th, td {
@@ -129,33 +134,36 @@ td a:hover {
     background-color: #f0e0ff;
 }
 
+/* Botones de acción */
 .btn-group {
-display: flex;
-align-items: center;
-gap: 20px; /* Separación entre los botones */
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .btn-editar, .btn-eliminar {
-background-color: #6f42c1; /* morado para editar */
-color: white;
-padding: 8px 16px;
-border: none;
-border-radius: 5px;
-text-decoration: none;
-font-size: 14px;
-cursor: pointer;
-display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+}
+
+.btn-editar {
+    background-color: #6f42c1;
 }
 
 .btn-eliminar {
-background-color: red; /* rojo para eliminar */
+    background-color: red;
 }
 
 .btn-editar:hover {
-background-color: #5936a3; /* morado más oscuro en hover */
+    background-color: #5936a3;
 }
 
 .btn-eliminar:hover {
-background-color: darkred; /* rojo más oscuro en hover */
+    background-color: darkred;
 }
-

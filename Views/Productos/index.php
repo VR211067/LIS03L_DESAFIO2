@@ -51,7 +51,13 @@
                     <td>
                     <div class="btn-group">
                         <a href="/TextilExport/Productos/edit/<?= $p['id'] ?>" class="btn-editar">Editar</a>
-                        <a href="/TextilExport/Productos/delete/<?= $p['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar este producto?')">Eliminar</a>
+                    
+
+                        <form action="/TextilExport/Productos/delete" method="POST" style="display:inline;">
+    <input type="hidden" name="id" value="<?= $p['id'] ?>">
+    <button type="submit" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar este producto?')">Eliminar</button>
+</form>
+
                     </div>
 
 
